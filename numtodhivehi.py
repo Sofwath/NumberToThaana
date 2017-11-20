@@ -28,7 +28,7 @@ def HaasSub(inputNumber):
                 + "ސަތޭކަ " + HaasSub(str(rem)))
 
 def constractSun(arrZero):
-	z = 0
+    z = 0
     while z <= arrZero[::-1]:
     	wrd = HaasSub(str(z)) + " "
         zap = sunbari[lenArr] + " "
