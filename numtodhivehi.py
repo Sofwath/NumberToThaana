@@ -7,25 +7,25 @@ dhihabari = ["ސުން","ދިހަ","ވިހި","ތިރީސް","ސާޅީސް","ފ�
 sunbari = ["","ހާސް","މިލިޔަން","ބިލިޔަން","ޓްރިލިޔަން"]
 
 def Badhalu(inputString):
-	intNum = eval(inputString.strip())
-
-	if intNum < 1000:
-	    return (HaasSub(inputString))
-	else:
-	    return (HaasMathi(inputString))
-
+    intNum = eval(inputString.strip())
+    if intNum < 1000:
+        return HaasSub(inputString)
+    else:
+        return HaasMathi(inputString)
 
 def HaasSub(inputNumber):
     number = int(inputNumber)
-    if (0 <= number <= 19):
+    if 0 <= number <= 19:
         return ehbari[number]
-    elif (20 <= number <= 99):
-        return (dhihabari[int(inputNumber[0])]) if (inputNumber[-1] == "0") else (dhihabari[int(inputNumber[0])] + " " + ehbari[int(inputNumber[1])])
-    elif (100 <= number <= 999):
+    elif 20 <= number <= 99:
+        return (dhihabari[int(inputNumber[0])] if inputNumber[-1] == '0'
+                 else dhihabari[int(inputNumber[0])] + ' '
+                + ehbari[int(inputNumber[1])])
+    elif 100 <= number <= 999:
         rem = number % 100
         dig = number // 100
-        return (ehbari[dig] + "ސަތޭކަ") if (rem == 0) else (ehbari[dig] + "ސަތޭކަ " + HaasSub(str(rem)))
-
+        return (ehbari[dig] + "ސަތޭކަ" if rem == 0 else ehbari[dig]
+                + "ސަތޭކަ " + HaasSub(str(rem)))
 
 def HaasMathi(inputNumber):
     number = int(inputNumber)
@@ -33,16 +33,17 @@ def HaasMathi(inputNumber):
     lenArr = len(arrZero) - 1
     resArr = []
     for z in arrZero[::-1]:
-        wrd = HaasSub(str(z)) + " "
-        zap = sunbari[lenArr] + " "
-        if wrd == " ":
+        wrd = HaasSub(str(z)) + ' '
+        zap = sunbari[lenArr] + ' '
+        if wrd == ' ':
             break
         elif wrd == "ސުން ":
-            wrd, zap = "", ""
+            (wrd, zap) = ('', '')
         resArr.append(wrd + zap)
         lenArr -= 1
-    res = "".join(resArr).strip()
-    if res[-1] == ",": res = res[:-1]
+    res = ''.join(resArr).strip()
+    if res[-1] == ',':
+        res = res[:-1]
     return res
 
 def HaasBuri(inputNumber):
@@ -53,7 +54,5 @@ def HaasBuri(inputNumber):
         number //= 1000
     return arrHaas
 
-
-strNum = input("integer:\n>> ")
-print (Badhalu(strNum))
-
+strNum = input('integer:\n>> ')
+print Badhalu(strNum)
