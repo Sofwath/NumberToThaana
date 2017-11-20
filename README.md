@@ -4,8 +4,11 @@ Convert Numbers(int) to Thaana Words
 Example:
 
 >> 2017
-ދޭ ހާސް ސަތާރަ
+
+ދޭ ހާސް ސަތާރަ  
+
 >> 36731
+
 ތިރީސް ހަ ހާސް ހަތްސަތޭކަ ތިރީސް އެއް
 
 To-Do:
