@@ -27,23 +27,26 @@ def HaasSub(inputNumber):
         return (ehbari[dig] + "ސަތޭކަ" if rem == 0 else ehbari[dig]
                 + "ސަތޭކަ " + HaasSub(str(rem)))
 
+def constractSun(arrZero):
+	z = 0
+    while z <= arrZero[::-1]:
+    	wrd = HaasSub(str(z)) + " "
+        zap = sunbari[lenArr] + " "
+        if wrd == " ":
+            break
+        elif wrd == "ސުން ":
+            wrd, zap = "", ""
+        resArr.append(wrd + zap)
+        lenArr -= 1
+    yield resArr
+
 def HaasMathi(inputNumber):
     number = int(inputNumber)
     arrZero = HaasBuri(number)
     lenArr = len(arrZero) - 1
     resArr = []
-    for z in arrZero[::-1]:
-        wrd = HaasSub(str(z)) + ' '
-        zap = sunbari[lenArr] + ' '
-        if wrd == ' ':
-            break
-        elif wrd == "ސުން ":
-            (wrd, zap) = ('', '')
-        resArr.append(wrd + zap)
-        lenArr -= 1
-    res = ''.join(resArr).strip()
-    if res[-1] == ',':
-        res = res[:-1]
+    res = "".join(constractSun(resArr)).strip()
+    if res[-1] == ",": res = res[:-1]
     return res
 
 def HaasBuri(inputNumber):
